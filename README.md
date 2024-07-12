@@ -18,6 +18,7 @@ After successful installation, you need to configure the `.env` file. You can ed
 
 ```bash
 npm run setup
+ ```
 
 ### Environment Variables
 
@@ -33,6 +34,7 @@ To start the bot, use the following command:
 
 ```bash
 npm start
+ ```
 
 The script will start listening for command inputs. Below are examples of how to use these commands:
 
@@ -42,6 +44,7 @@ To buy a token available on Moonshot, enter the command type, amount in SOL, and
 
 ```bash
 buy 0.01 EnterMintAddress
+ ```
 
 ### Selling Tokens
 
@@ -49,6 +52,7 @@ To sell a token, provide the command type, the amount of tokens you want to sell
 
 ```bash
 sell 1000 EnterMintAddress
+ ```
 
 ### Checking Token Balance
 
@@ -56,6 +60,7 @@ To check the balance of tokens in your wallet for a specific mint, send the comm
 
 ```bash
 balance EnterMintAddress
+ ```
 
 ## Support and Feedback
 

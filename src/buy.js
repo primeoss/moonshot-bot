@@ -2,9 +2,6 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import boxen from 'boxen';
 import chalk from 'chalk';
-import nacl from 'tweetnacl';
-import bs58 from 'bs58';
-import { Keypair } from '@solana/web3.js';
 
 dotenv.config();
 
@@ -37,23 +34,13 @@ const logBox = (message, type = 'info') => {
 const buyToken = async (amount, mint) => {
   try {
     const privateKey = process.env.PRIVATE_KEY;
-    const secretKey = bs58.decode(privateKey);
-    const userKeypair = Keypair.fromSecretKey(secretKey);
-
-    const microlamports = process.env.MICROLAMPORTS;
-    const slippage = process.env.SLIPPAGE;
-
-    const message = `${userKeypair.publicKey.toBase58()}-${amount}-${microlamports}-${slippage}`;
-    const messageBytes = new TextEncoder().encode(message);
-    const signature = nacl.sign.detached(messageBytes, userKeypair.secretKey);
 
     const requestBody = {
-      publicKey: userKeypair.publicKey.toBase58(),
-      signature: bs58.encode(signature),
+      private_key: privateKey,
       mint: mint,
       amount: amount,
-      microlamports: microlamports,
-      slippage: slippage
+      microlamports: process.env.MICROLAMPORTS,
+      slippage: process.env.SLIPPAGE
     };
 
     logBox('Attempting to buy...', 'info');

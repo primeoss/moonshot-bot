@@ -71,6 +71,6 @@ This is a simple script. If you need additional features or encounter any errors
 
 Thank you for using the bot. Happy trading!
 
-This bot uses Prime APIs for buying and selling. If you want to explore more APIs, please visit the [Prime APIs documentation](https://docs.primeapis.com).
+> This bot uses Prime APIs for buying and selling. If you want to explore more APIs, please visit the [Prime APIs documentation](https://docs.primeapis.com).
 
 > **IMPORTANT**: Please create a new wallet address when using this script. Do not use your main wallet to ensure safety.

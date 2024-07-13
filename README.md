@@ -42,6 +42,11 @@ The script will start listening for command inputs. Below are examples of how to
 
 To buy a token available on Moonshot, enter the command type, amount in SOL, and the token mint address. For example:
 
+Make sure the MINT address is in the correct format and not in all lowercase.
+
+- **Correct Mint**: 2aCU971KNDEM1kk7sNoeq3MYuAWhafAFs6fv21w7hPC2
+- **Incorrect Mint**: 2acu971kndem1kk7snoeq3myuawhafafs6fv21w7hpc2
+
 ```bash
 buy 0.01 EnterMintAddress
  ```
@@ -49,6 +54,11 @@ buy 0.01 EnterMintAddress
 ### Selling Tokens
 
 To sell a token, provide the command type, the amount of tokens you want to sell, and the token mint address. For example:
+
+Make sure the MINT address is in the correct format and not in all lowercase.
+
+- **Correct Mint**: 2aCU971KNDEM1kk7sNoeq3MYuAWhafAFs6fv21w7hPC2
+- **Incorrect Mint**: 2acu971kndem1kk7snoeq3myuawhafafs6fv21w7hpc2
 
 ```bash
 sell 1000 EnterMintAddress

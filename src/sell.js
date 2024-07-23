@@ -2,6 +2,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import boxen from 'boxen';
 import chalk from 'chalk';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ const boxenOptions = {
 
 const logBox = (message, type = 'info') => {
   let colorFunc = chalk.white;
-  switch(type) {
+  switch (type) {
     case 'success':
       colorFunc = chalk.green;
       break;
@@ -29,6 +30,24 @@ const logBox = (message, type = 'info') => {
       colorFunc = chalk.white;
   }
   console.log(boxen(colorFunc(message), boxenOptions));
+};
+
+const loadRecords = () => {
+  try {
+    const data = fs.readFileSync('records.json', 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    logBox('Error loading records. Proceeding without updating records.', 'warning');
+    return null;
+  }
+};
+
+const saveRecords = (records) => {
+  try {
+    fs.writeFileSync('records.json', JSON.stringify(records, null, 2), 'utf8');
+  } catch (error) {
+    logBox('Error saving records.', 'error');
+  }
 };
 
 const sellToken = async (amount, mint) => {
@@ -50,6 +69,15 @@ const sellToken = async (amount, mint) => {
 
     if (status === 'success') {
       logBox(`Successfully sold. Sol received: ${sol}. Signature: ${txid}`, 'success');
+
+      const records = loadRecords();
+      if (records && records[mint]) {
+        const solNum = parseFloat(sol);
+        records[mint].sold_for = solNum;
+        records[mint].status = 'sold';
+        saveRecords(records);
+      }
+
       return true;
     } else {
       logBox('Failed to sell tokens', 'error');

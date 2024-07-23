@@ -2,6 +2,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import boxen from 'boxen';
 import chalk from 'chalk';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ const boxenOptions = {
 
 const logBox = (message, type = 'info') => {
   let colorFunc = chalk.white;
-  switch(type) {
+  switch (type) {
     case 'success':
       colorFunc = chalk.green;
       break;
@@ -29,6 +30,24 @@ const logBox = (message, type = 'info') => {
       colorFunc = chalk.white;
   }
   console.log(boxen(colorFunc(message), boxenOptions));
+};
+
+const loadRecords = () => {
+  try {
+    const data = fs.readFileSync('records.json', 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    logBox('Error loading records, initializing new record file.', 'warning');
+    return {};
+  }
+};
+
+const saveRecords = (records) => {
+  try {
+    fs.writeFileSync('records.json', JSON.stringify(records, null, 2), 'utf8');
+  } catch (error) {
+    logBox('Error saving records.', 'error');
+  }
 };
 
 const buyToken = async (amount, mint) => {
@@ -50,6 +69,40 @@ const buyToken = async (amount, mint) => {
 
     if (status === 'success') {
       logBox(`Successfully bought: ${tokens} tokens at rate: ${usd} USD. Signature: ${txid}`, 'success');
+      
+      const records = loadRecords();
+      const amountNum = parseFloat(amount);
+      const tokensNum = parseFloat(tokens);
+      const usdNum = parseFloat(usd);
+
+      if (!records[mint]) {
+        records[mint] = {
+          mint: mint,
+          sol: amountNum,
+          tokens: tokensNum,
+          bought_at: usdNum,
+          price: 0,
+          status: 'bought',
+          sold_at: 0,
+          sold_for: 0
+        };
+      } else {
+        if (records[mint].status === 'sold') {
+          records[mint].status = 'bought';
+          records[mint].sold_at = 0;
+          records[mint].sold_for = 0;
+          records[mint].bought_at = usdNum;
+          records[mint].price = 0;
+          records[mint].sol = amountNum; // Set to new sol value
+          records[mint].tokens = tokensNum; // Set to new tokens value
+        } else {
+          records[mint].sol = parseFloat(records[mint].sol) + amountNum;
+          records[mint].tokens = parseFloat(records[mint].tokens) + tokensNum;
+        }
+      }
+
+      saveRecords(records);
+
       return true;
     } else {
       logBox('Failed to buy tokens', 'error');

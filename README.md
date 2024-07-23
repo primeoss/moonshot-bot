@@ -27,6 +27,10 @@ Ensure each variable in the `.env` file is correctly configured:
 - `PRIVATE_KEY`: Enter your base58 private key.
 - `MICROLAMPORTS`: Use the correct fee (e.g., 100000 or 500000).
 - `SLIPPAGE`: Use 100 for 1% slippage or 1000 for 10%.
+- `PRICE_CHECK_DELAY`: Enter price check delay in MS.
+- `TAKE_PROFIT`: Enter your TP % (e.g., 10 or 500).
+- `STOP_LOSS`: Enter your SL % (e.g., 10 or 500).
+- `MAX_SELL_RETRIES=5`: Enter retries when selling default 5.
 
 ## Usage
 

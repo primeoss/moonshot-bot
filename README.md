@@ -3,12 +3,13 @@
 This project allows you to buy or sell tokens on Dexscreener Moonshot using Node.js, leveraging Prime APIs.
 
 ## Features
-1: Buy - Manual.
-2: Sell - Manual & auto.
-3: Take profit & stop loss.
-4: Check mint balances.
-5: Manual buys and sells.
-6: Detailed logs of bought or sold tokens.
+
+- `Buy`: Manual.
+- `Sell`: Manual & auto.
+- `TP SL`: Take profit & stop loss.
+- `Balance`: Check mint balances.
+- `Manual`: + Manual buys and sells.
+- `Logs`: Detailed logs of bought or sold tokens.
 
 More coming soon
 

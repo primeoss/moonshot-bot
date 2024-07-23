@@ -1,6 +1,6 @@
 # Token Trading Bot on Dexscreener Moonshot
 
-This project allows you to buy or sell tokens on Dexscreener Moonshot using Node.js, leveraging Prime APIs.
+This project allows you to buy or sell tokens with manual and automated features for auto take profit and stop loss on Dexscreener Moonshot using Node.js, leveraging Prime APIs.
 
 ## Features
 

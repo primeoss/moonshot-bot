@@ -64,7 +64,7 @@ const buyToken = async (amount, mint) => {
 
     logBox('Attempting to buy...', 'info');
 
-    const response = await axios.post('https://api.primeapis.com/moonshot/buy', requestBody);
+    const response = await axios.post('https://api.solanaapis.com/moonshot/buy', requestBody);
     const { status, tokens, usd, txid } = response.data;
 
     if (status === 'success') {

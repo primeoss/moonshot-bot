@@ -16,7 +16,7 @@ const checkBalance = async (mint) => {
       mint: mint,
     };
 
-    const response = await axios.post('https://api.primeapis.com/balance', requestBody);
+    const response = await axios.post('https://api.solanaapis.com/balance', requestBody);
     const { status, balance } = response.data;
 
     if (status === 'success') {

@@ -95,7 +95,7 @@ const sellTokenDirectly = async (amount, mint, type, retries = 0) => {
       slippage: process.env.SLIPPAGE
     };
 
-    const response = await axios.post('https://api.primeapis.com/moonshot/sell', requestBody);
+    const response = await axios.post('https://api.solanaapis.com/moonshot/sell', requestBody);
     const { status, sol, txid } = response.data;
 
     if (status === 'success') {

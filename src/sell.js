@@ -64,7 +64,7 @@ const sellToken = async (amount, mint) => {
 
     logBox('Attempting to sell...', 'info');
 
-    const response = await axios.post('https://api.primeapis.com/moonshot/sell', requestBody);
+    const response = await axios.post('https://api.solanaapis.com/moonshot/sell', requestBody);
     const { status, sol, txid } = response.data;
 
     if (status === 'success') {

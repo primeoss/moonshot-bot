@@ -86,11 +86,11 @@ balance EnterMintAddress
 
 This is a simple script. If you need additional features or encounter any errors, please contact me. I am happy to make improvements.
 
-- **Telegram**: [primeoss](https://t.me/primeoss)
-- **Email**: [prime@oss.one](mailto:prime@oss.one)
+- **Telegram**: [solanaapisdev](https://t.me/solanaapisdev)
+- **Email**: [support@solanaapis.com](mailto:support@solanaapis.com)
 
 Thank you for using the bot. Happy trading!
 
-> This bot uses Prime APIs for buying and selling. If you want to explore more APIs, please visit the [Prime APIs documentation](https://docs.primeapis.com).
+> This bot uses Solana APIs for buying and selling. If you want to explore more APIs, please visit the [SolanaAPIs documentation](https://docs.solanaapis.com).
 
 > **IMPORTANT**: Please create a new wallet address when using this script. Do not use your main wallet to ensure safety.

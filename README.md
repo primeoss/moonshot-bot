@@ -86,7 +86,7 @@ balance EnterMintAddress
 
 This is a simple script. If you need additional features or encounter any errors, please contact me. I am happy to make improvements.
 
-- **Telegram**: [solanaapisdev](https://t.me/solanaapisdev)
+- **Telegram**: [solanaapis](https://t.me/solanaapis)
 - **Email**: [support@solanaapis.com](mailto:support@solanaapis.com)
 
 Thank you for using the bot. Happy trading!
